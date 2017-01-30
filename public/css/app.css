@@ -10,11 +10,69 @@ body { font: 13px Helvetica, Arial; }
 
 .video-panel{
 	width: 800px;
-	height: 400px;
 	flex: 1;
     -webkit-flex: 1;
     -ms-flex: 1;
+    height: 500px;
 }
+
+.room-header{
+	height: 80px;
+	display: flex;
+	flex-direction: row;
+	border: 1px solid #ececec;
+	width: 800px;
+}
+
+.room-title{
+	padding: 10px 10px 10px 50px;
+}
+
+.room-head-info{
+	padding: 0 10px 10px 50px;
+}
+
+/*主播*/
+.anchor{
+	color: #575757;
+	font: 12px/1.5 "STHeiti","Microsoft YaHei","Helvetica Neue","Helvetica","SimSun","STSong","Arial","sans-serif"; 
+}
+
+/*分类*/
+.category{
+	margin-left: 10px;
+}
+
+/*头像*/
+.room-cover{
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.room-cover img{
+	width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.room-header-descr{
+	display: flex;
+	flex-direction: column;
+	width: 600px;
+}
+
+.audience-num{
+	margin-top: 50px;
+	font: 14px/1.5 "STHeiti","Microsoft YaHei","Helvetica Neue","Helvetica","SimSun","STSong","Arial","sans-serif";	
+    
+}
+
+.audience-num .num{
+	color: #04c073;
+}
+
 
 .chat-panel{
 	display: flex;
@@ -27,9 +85,7 @@ body { font: 13px Helvetica, Arial; }
 	list-style-type: none; 
 	margin: 0; 
 	padding: 0; 
-
-
-	height: 370px;
+	flex: 1;
     overflow-y: scroll;
 }
 
@@ -41,6 +97,12 @@ body { font: 13px Helvetica, Arial; }
 /*.chat-container li:nth-child(odd) { 
 	background: #eee; 
 }*/
+.video-box{
+	width:800px;
+	height:400px;
+	margin-top: 10px;
+}
+
 .chat-container .user-name{
 	color: #298e48;
 }
@@ -61,7 +123,24 @@ body { font: 13px Helvetica, Arial; }
 .chat-dispatch{
 	display: flex;
     width: 100%;
-    height: 30px;
+   	height: 80px;
+    flex-direction: column;
+    background-color: #ededed;
+}
+
+.chat-tools{
+	height: 15px;
+	margin: 10px 20px 10px;
+}
+
+.chat-tools a{
+	text-decoration: none;
+}
+
+.chat-send{
+	display: flex;
+    height: 50px;
+    margin: 10px 20px 12px;
 }
 
 .chat-dispatch textarea{

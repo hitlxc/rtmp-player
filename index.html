@@ -1,54 +1,70 @@
 <!doctype html>
 <html>
-  <head>
-    <title>MyLive SHOW</title>
-    <link href="./css/video.css" rel="stylesheet">
-    <link href="./css/app.css" rel="stylesheet">
-    <script src="./js/video.js"></script>
-    <script src="./js/videojs-live.js"></script>
-  </head>
-    
-  <body>  
-    <div class="content-box">
-      
-      <div class="chat-panel">
-        <form action="" class="chat-dispatch" >
-           <textarea  id="m" autocomplete="off" ></textarea> <button>发送</button>
-        </form>
-        <ul id="messages" class="chat-container"></ul>
-        
-      </div>
-
-      <div class="video-panel">
-        <video id="my_video_1" class="video-js vjs-default-skin " controls preload="auto" width="800" height="400" poster="./fm.jpg" data-setup='{}'>
-      
-      <!-- <source src="../hls/.m3u8" type="application/x-mpegURL"> -->
-          <source src="rtmp://127.0.0.1:1935/myapp/" type="rtmp/flv"> 
-        </video>
-      </div>
-    </div>
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-      var socket = io();
-
-      $('form').submit(function(){
-        if($('#m').val() ) {
-          socket.emit('chat message', $('#m').val());
-          $('#messages').append("<li><span class='self'>Yourself：</span> <span class='message'>"+$('#m').val()+"</span></li>");
-          $('#m').val('');
-          return false;
-        }
-        return false;
-      });
-    
-      socket.on('chat message', function(msg){
-        if(socket.id.substr(0,4)!=msg.substr(0,4)){
-          $('#messages').append("<li><span class='user-name'>游客"+msg.substr(0,4).toUpperCase()+"：</span> <span class='message'>"+msg.substr(5)+"</span></li>");
-        }
-        document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight
-      });
-    </script>
-  </body>
+    <head>
+        <title>MyLive SHOW</title>
+        <link href="./css/video.css" rel="stylesheet">
+        <link href="./css/app.css" rel="stylesheet">
+        <script src="./js/video.js"></script>
+        <script src="./js/videojs-live.js"></script>
+    </head>
+    <body>  
+        <div class="content-box">
+            <div class="chat-panel">
+                <div class="chat-dispatch">
+                    <div class="chat-tools">
+                        <a href="">清屏</a>
+                        <a href="">屏蔽</a>
+                        <a href="">滚屏</a>
+                    </div>
+                    <form action="" class="chat-send" >
+                        <textarea  id="m" autocomplete="off" ></textarea> <button>发送</button>
+                    </form>
+                </div>
+                
+                <ul id="messages" class="chat-container"></ul>
+            </div>
+            <div class="video-panel">
+                <div class="room-header">
+                    <div class="room-cover">
+                        <img src="http://img.duoziwang.com/2016/12/08/18594927932.jpg">
+                    </div>
+                    <div class="room-header-descr">
+                        <h1 class="room-title">XXX的直播间</h1>
+                        <div class="room-head-info">
+                            <span class="anchor">主播XXX</span>
+                            <span class="category">分类</span>
+                        </div>
+                    </div>
+                    <div class="audience-num">
+                        <span>在线人数</span>
+                        <span class="num">6666</span>
+                    </div>
+                </div>
+                <video id="my_video_1" class="video-js vjs-default-skin video-box" controls preload="auto"  poster="./fm.jpg" data-setup='{}'>
+                <!-- <source src="../hls/.m3u8" type="application/x-mpegURL"> -->
+                    <source src="rtmp://127.0.0.1:1935/myapp/" type="rtmp/flv"> 
+                </video>
+            </div>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+        <script>
+            var socket = io();
+            $('form').submit(function(){
+                if($('#m').val() ) {
+                    socket.emit('chat message', $('#m').val());
+                    $('#messages').append("<li><span class='self'>Yourself：</span> <span class='message'>"+$('#m').val()+"</span></li>");
+                    $('#m').val('');
+                    return false;
+                }
+                return false;
+            });
+            socket.on('chat message', function(msg){
+                if(socket.id.substr(0,4)!=msg.substr(0,4)){
+                    $('#messages').append("<li><span class='user-name'>游客"+msg.substr(0,4).toUpperCase()+"：</span> <span class='message'>"+msg.substr(5)+"</span></li>");
+                }
+                document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight
+            });
+        </script>
+    </body>
 </html>
