@@ -1,11 +1,13 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font: 13px Helvetica, Arial; }
+html {height: 100%;}
+body {height: 100%; font: 13px "STHeiti","Microsoft YaHei","Helvetica Neue","Helvetica","SimSun","STSong","Arial","sans-serif"; }
       
 
 .content-box{
 	display: flex;
 	display: -webkit-flex;
 	flex-direction: row-reverse;
+	height: 100%;
 }
 
 .video-panel{
@@ -77,6 +79,7 @@ body { font: 13px Helvetica, Arial; }
 .chat-panel{
 	display: flex;
 	flex-direction:column-reverse;
+	height: 100%;
 	width: 400px;
     border: 1px solid #ececec;
 }
@@ -106,8 +109,13 @@ body { font: 13px Helvetica, Arial; }
 .chat-container .user-name{
 	color: #298e48;
 }
+
 .chat-container .self{
 	color: #0472c0;
+}
+
+.chat-container .alerts{
+	color: #575757;
 }
 
 .chat-container .message{
@@ -123,7 +131,6 @@ body { font: 13px Helvetica, Arial; }
 .chat-dispatch{
 	display: flex;
     width: 100%;
-   	height: 80px;
     flex-direction: column;
     background-color: #ededed;
 }
@@ -133,14 +140,9 @@ body { font: 13px Helvetica, Arial; }
 	margin: 10px 20px 10px;
 }
 
-.chat-tools a{
-	text-decoration: none;
-}
-
 .chat-send{
 	display: flex;
-    height: 50px;
-    margin: 10px 20px 12px;
+    margin: 0 20px 12px;
 }
 
 .chat-dispatch textarea{
